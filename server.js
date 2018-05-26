@@ -20,16 +20,16 @@ app.post('/', function(req, res) {
                 title: data.og.title,
                 description: data.og.description,
                 url: data.og.url,
-                image: data.og.images[0].url
             }
+            if(data.og.images[0]) meta.image = data.og.images[0].url
             res.json(meta);
         } else {
             meta = {
                 title: data.meta.title,
                 description: data.meta.description,
                 url: data.meta.canonical,
-                image: data.images[0].url
             }
+            if(data.images[0]) meta.image = data.images[0].url
             res.json(meta);
         }
     });
